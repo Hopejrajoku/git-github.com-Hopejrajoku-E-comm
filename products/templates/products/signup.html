@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block description %}You can create an account on myshop store.{% endblock %}
+{% block robots %}signup, follow{% endblock %}
+{% block keywords %}modern black suit, myshop{% endblock %}
+{% block css %}{% static "products/signup.css" %}{% endblock %}
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+
+    {% include "includes/nav.html" %}
+
+  <form method="POST">
+    {% csrf_token %}
+     
+  <div id="sign">
+      <h1>Sign-up</h1>
+  </div>
+
+    <label for="username">Username:</label><br>
+    {{form.username}}<br>
+
+    <label for="email">Email:</label><br>
+    {{form.email}}<br>
+   
+    <label for="pass">Password:</label><br>
+     {{form.password1}}<br>
+
+    <label for="pass">Comfirm Password:</label><br>
+     {{form.password2}}<br>
+
+ <br>
+   <button type="submit">Signup</button>
+   <div class="signin">
+
+    {{form.errors}}
+    <p>Already have an account? <a href="{% url "signin" %}">Signin</a></p>
+   </div>
+</form>
+
+{% endblock %}
+{% block javascript %}{% static "products/index.js" %}{% endblock %}
